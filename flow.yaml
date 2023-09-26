@@ -1,0 +1,13 @@
+appId: com.reactnativemaestroexample
+---
+- launchApp:
+    appId: com.reactnativemaestroexample
+- tapOn:
+    text: 'Username'
+    index: 1
+- inputRandomPersonName
+- tapOn:
+    id: 'passwordInput'
+- inputText: 'Hello World'
+- tapOn:
+    id: 'signInButton'
