@@ -14,7 +14,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-public class NetworkModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
+public class NetworkModuleOld extends ReactContextBaseJavaModule implements LifecycleEventListener {
     private static int selectedNetworkType = 1; // 1 = wifi, 0 = mobile data
     private static final String TAG = "NetworkModule";
     private static ConnectivityManager mConnectivityManager;
@@ -22,7 +22,7 @@ public class NetworkModule extends ReactContextBaseJavaModule implements Lifecyc
 
     private ReactApplicationContext appContext;
 
-    NetworkModule(ReactApplicationContext context) {
+    NetworkModuleOld(ReactApplicationContext context) {
         super(context);
         appContext = context;
         context.addLifecycleEventListener(this);
@@ -33,7 +33,7 @@ public class NetworkModule extends ReactContextBaseJavaModule implements Lifecyc
 
     @Override
     public String getName() {
-        return "NetworkModule";
+        return "NetworkModuleOld";
     }
 
     @ReactMethod

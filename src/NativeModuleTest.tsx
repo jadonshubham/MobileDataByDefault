@@ -1,21 +1,17 @@
-import {
-  View,
-  Text,
-  Pressable,
-  NativeModules,
-  StyleSheet,
-  ToastAndroid,
-} from 'react-native';
+import {View, Text, Pressable, StyleSheet, ToastAndroid} from 'react-native';
 import React from 'react';
-
-const {NetworkModule} = NativeModules;
+import NetworkModule from './NetworkModule';
 
 const NativeModuleTest = () => {
-  const onPress = () => {
-    NetworkModule.changeNetworkToMobileData();
+  const changeNetworkToCellular = async () => {
+    try {
+      await NetworkModule.changeNetworkToCellular();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const callApi = () => {
+  const changeNetworkToDefault = () => {
     NetworkModule.changeNetworkToWifi();
   };
 
@@ -37,11 +33,13 @@ const NativeModuleTest = () => {
     <View style={styles.container}>
       <View style={styles.row}>
         <Pressable
-          onPress={onPress}
+          onPress={changeNetworkToCellular}
           style={[styles.buttonContainer, styles.greenButton]}>
           <Text style={styles.buttonText}>Restrict to Mobile Data</Text>
         </Pressable>
-        <Pressable onPress={callApi} style={styles.buttonContainer}>
+        <Pressable
+          onPress={changeNetworkToDefault}
+          style={styles.buttonContainer}>
           <Text style={styles.buttonText}>Allow both</Text>
         </Pressable>
       </View>
